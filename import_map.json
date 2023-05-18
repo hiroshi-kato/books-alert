@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "deno_slack_api": "https://deno.land/x/deno_slack_api@0.0.8/mod.ts"
+  }
+}

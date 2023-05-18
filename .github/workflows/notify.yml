@@ -1,0 +1,22 @@
+name: notify
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # JST 9:00 every day
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: denoland/setup-deno@main
+        with:
+          deno-version: v1.x
+      - name: Run notify
+        run: deno task run
+        env:
+          DATABASE_ID: ${{ secrets.DATABASE_ID }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
