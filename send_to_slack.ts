@@ -5,10 +5,10 @@ const SLACK_CHANNEL = Deno.env.get('SLACK_CHANNEL');
 
 export const sendToSlack = async (message: string) => {
   if (!SLACK_TOKEN || !SLACK_CHANNEL) return;
-  const client = SlackAPI(SLACK_TOKEN);
+  const slackClient = SlackAPI(SLACK_TOKEN);
 
   try {
-    await client.chat.postMessage({
+    await slackClient.chat.postMessage({
       text: message,
       channel: SLACK_CHANNEL,
     });
